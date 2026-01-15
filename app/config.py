@@ -1,11 +1,19 @@
 import os
 
-class Config:
-    SECRET_KEY = os.environ.get("SECRET_KEY")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+class DevelopmentConfig:
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:Secretgarden@localhost/mechanic_shop'
+    DEBUG = True
+    CACHE_TYPE = "SimpleCache"
+    CACHE_DEFAULT_TIMEOUT = 300
 
-class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
 
-class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI")
+class TestingConfig:
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
+    DEBUG = True
+    CACHE_TYPE = "SimpleCache"
+
+
+class ProductionConfig:
+    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI") or 'sqlite:///app.db'
+    CACHE_TYPE = "SimpleCache"
+

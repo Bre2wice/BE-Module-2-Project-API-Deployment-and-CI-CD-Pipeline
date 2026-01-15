@@ -2,8 +2,9 @@ from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
 from functools import wraps
 from flask import request, jsonify
+import os
 
-SECRET_KEY = "super-secret-key"
+SECRET_KEY = os.environ.get("SECRET_KEY") or "super-secret-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 

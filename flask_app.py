@@ -1,11 +1,10 @@
-from app import create_app
 from app.models import db
+from app import create_app
 
 app = create_app('DevelopmentConfig')
 
-with app.app_content():
-    #db.drop_all()
+with app.app_context():
+    # bd.drop_all()
     db.create_all()
 
-
-app.run()
+app.run()    
