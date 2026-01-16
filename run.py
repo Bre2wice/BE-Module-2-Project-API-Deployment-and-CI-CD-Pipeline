@@ -1,11 +1,8 @@
 from app import create_app
 from app.models import db
+from app.config import DevelopmentConfig
 
-app = create_app('ProductionConfig')
+app = create_app(DevelopmentConfig)
 
-with app.app_content():
-    #db.drop_all()
-    db.create_all()
-
-
-app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
