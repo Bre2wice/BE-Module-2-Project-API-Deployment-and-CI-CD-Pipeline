@@ -5,7 +5,7 @@ info:
   description: "API to manage a Mechanic Shop"
   version: "1.0.0"
 
-host: "https://be-module-2-project-api-deployment-and.onrender.com"
+host: "be-module-2-project-api-deployment-and.onrender.com"
 
 schemes:
   - https
