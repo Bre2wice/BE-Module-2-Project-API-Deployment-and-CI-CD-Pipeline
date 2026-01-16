@@ -2,6 +2,7 @@ from flask import Flask
 from app.extensions import db, ma, limiter, cache
 from flask_migrate import Migrate
 from app.config import ProductionConfig, TestingConfig
+from flask_cors import CORS
 
 # Import blueprints
 from app.customers import customers_bp
@@ -28,6 +29,9 @@ def create_app(testing=False):
         app.config.from_object(TestingConfig)
     else:
         app.config.from_object(ProductionConfig)
+
+    # ENABLE CORS
+    CORS(app)
 
     # Initialize extensions
     db.init_app(app)
