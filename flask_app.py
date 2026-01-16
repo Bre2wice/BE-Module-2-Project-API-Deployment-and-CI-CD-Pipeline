@@ -1,10 +1,8 @@
-from app.models import db
 from app import create_app
-from app.config import ProductionConfig
+from app.models import db
 
-app = create_app(ProductionConfig)
+# IMPORTANT: pass the config name as a STRING
+app = create_app('ProductionConfig')
 
 with app.app_context():
-    # bd.drop_all()
     db.create_all()
-    
